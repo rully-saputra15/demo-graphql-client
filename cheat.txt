@@ -1,0 +1,44 @@
+home screen
+
+const { data, loading, error } = useQuery(GET_BOOKS);
+
+const GET_BOOK_BY_ID = gql`
+  query GetBookById($bookById: ID!) {
+    bookById(id: $bookById) {
+      id
+      description
+      price
+      title
+    }
+  }
+`;
+
+const GET_BOOK_BY_ID = gql`
+  query GetBookById($bookById: ID!) {
+    bookById(id: $bookById) {
+      id
+      description
+      price
+      title
+    }
+  }
+`;
+
+const POST_NEW_BOOK = gql`
+  mutation Mutation($newBook: BookParams) {
+    addBook(newBook: $newBook) {
+      id
+      description
+      price
+      title
+    }
+  }
+`;
+
+  const { data, loading, error } = useQuery(GET_BOOK_BY_ID, {
+    variables: { bookById: id },
+  });
+
+    const [mutate, { data, loading, error }] = useMutation(POST_NEW_BOOK, {
+    refetchQueries: ["GetBooks"],
+  });
